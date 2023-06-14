@@ -30,7 +30,7 @@ html {
   color: #4912e0d8;
   padding: 5px;
   margin: auto;
-  width: 80%;
+  width: 90%;
 }
 
 .menu ul {
@@ -149,6 +149,7 @@ h1 {
 
 <div class="header" >
  <h1  >Deteksi Tumor Otak</h1>
+
 </div>
 <div class="row">
   <div class="col-3 col-s-3 menu">
@@ -156,10 +157,17 @@ h1 {
 
   <div class="col-6 col-s-9 menu" >
 	<div style="margin: auto;  width: 100%; "  >	
-    <input id="imageUpload" type="file"   style="background-color: rgb(255, 255, 255); margin: auto;  width: 100%;  padding:25px;" />	
+    <input id="imageUpload" type="file"   style="background-color: rgba(52, 50, 50, 0.27); margin: auto;  width: 80%;  padding:25px;" />	 
+    <button onclick="   location.reload();" style="background-color: red;">Reload</button>
 	</div>
-	<div   id="label-container" style=" margin: auto;margin-top: 10px; width: 100%; padding:5px;background-color: rgba(4, 16, 16, 0.752); padding:25px;color: #f3f0f0;"></div>
-	<div style=" margin: auto; width: 100%; padding:5px;;"><img id="imagePreview" width="100%" ></div>
+	<div  id="demo"s  style=" margin: auto;margin-top: 10px; width: 100%; padding:5px;background-color: rgba(4, 16, 16, 0.752);color: #f3f0f0;">
+
+  </div>
+  <div   id="label-container"  style="width: 100%; padding:5px;background-color: rgba(4, 16, 16, 0.752);color: #f3f0f0;"></div>
+
+
+	
+  <div style=" margin: auto; width: 100%; padding:5px;;"><img id="imagePreview" width="100%" ></div>
     </div >
 	
 
@@ -174,7 +182,7 @@ h1 {
 		<script src="https://cdn.jsdelivr.net/npm/@teachablemachine/image@0.8/dist/teachablemachine-image.min.js"></script>
 		<script type="text/javascript">
 			
-			const URL = 'https://teachablemachine.withgoogle.com/models/2JZHso4v7/';
+			const URL = 'https://teachablemachine.withgoogle.com/models/ptkQSWK1g/';
 
 			let model, labelContainer, maxPredictions;
 
@@ -191,6 +199,7 @@ h1 {
 				for (let i = 0; i < maxPredictions; i++) {
 					// and class labels
 					labelContainer.appendChild(document.createElement('div'));
+       
 				}
 			}
 
@@ -200,9 +209,12 @@ h1 {
 				const prediction = await model.predict(image, false);
 				for (let i = 0; i < maxPredictions; i++) {
 					const classPrediction =
-						prediction[i].className + ': ' + prediction[i].probability.toFixed(2)*100+'%';
+					prediction[i].className + ': ' + prediction[i].probability.toFixed(2)*100+'%';
 					labelContainer.childNodes[i].innerHTML = classPrediction;
+        
 				}
+        const d = new Date();
+         document.getElementById("demo").innerHTML = d;
 			}
 		</script>
 
