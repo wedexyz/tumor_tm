@@ -157,11 +157,15 @@ h1 {
 
   <div class="col-6 col-s-9 menu" >
 	<div style="margin: auto;  width: 100%; "  >	
-    <input id="imageUpload" type="file"   style="background-color: rgba(52, 50, 50, 0.27); margin: auto;  width: 80%;  padding:25px;" />	 
-    <button onclick="   location.reload();" style="background-color: red;">Reload</button>
-	</div>
-	<div  id="demo"s  style=" margin: auto;margin-top: 10px; width: 100%; padding:5px;background-color: rgba(4, 16, 16, 0.752);color: #f3f0f0;">
+    <input id="imageUpload" type="file"   style="background-color: rgba(52, 50, 50, 0.27); margin: auto;  width: 50%;  padding:25px;" />	 
 
+    <input type="button" onclick="printDiv('printableArea')" value="print a div!" />
+    <button onclick="location.reload();" style="background-color: red;padding: 8px;" type="button" >Reload</button>
+	</div>
+<div  id="printableArea">
+
+
+	<div  id="demo"s  style=" margin: auto;margin-top: 10px; width: 100%; padding:5px;background-color: rgba(4, 16, 16, 0.752);color: #f3f0f0;">
   </div>
   <div   id="label-container"  style="width: 100%; padding:5px;background-color: rgba(4, 16, 16, 0.752);color: #f3f0f0;"></div>
 
@@ -238,6 +242,16 @@ h1 {
 			$('#imageUpload').change(function () {
 				readURL(this);
 			});
+      function printDiv(divName) {
+     var printContents = document.getElementById(divName).innerHTML;
+     var originalContents = document.body.innerHTML;
+
+     document.body.innerHTML = printContents;
+
+     window.print();
+
+     document.body.innerHTML = originalContents;
+}
 		</script>
 
 </body>
